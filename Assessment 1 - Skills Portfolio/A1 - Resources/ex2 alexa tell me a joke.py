@@ -68,7 +68,7 @@ class JokeApp:
                                     bg='orange', width=15)
         self.next_button.grid(row=1, column=0, padx=10, pady=5)
         
-        # Quit button
+        # Quit the button
         self.quit_button = tk.Button(button_frame, text="Quit", 
                                     font=("Arial", 14), command=self.window.quit,
                                     bg='red', fg='white', width=15)
