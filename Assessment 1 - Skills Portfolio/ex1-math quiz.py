@@ -3,9 +3,9 @@ from tkinter import messagebox
 import random
 
 class MathQuiz:
-    def __init__(self):
+    def _init_(self):
         self.window = tk.Tk()
-        self.window.title("Math Quiz Game")
+        self.window.title("math Quiz Game")
         self.window.geometry("400x300")
         
         self.score = 0
@@ -35,13 +35,13 @@ class MathQuiz:
         self.difficulty_label = tk.Label(self.difficulty_frame, text="Choose your difficulty level:", font=("Arial", 14))
         self.difficulty_label.pack(pady=10)
         
-        self.easy_btn = tk.Button(self.difficulty_frame, text="Easy (1-digit numbers)", command=lambda: self.set_difficulty("easy"))
+        self.easy_btn = tk.Button(self.difficulty_frame, text="Easy (1 digit numbers)", command=lambda: self.set_difficulty("easy"))
         self.easy_btn.pack(pady=5)
         
-        self.moderate_btn = tk.Button(self.difficulty_frame, text="Moderate (2-digit numbers)", command=lambda: self.set_difficulty("moderate"))
+        self.moderate_btn = tk.Button(self.difficulty_frame, text="Moderate (2 digt numbers)", command=lambda: self.set_difficulty("moderate"))
         self.moderate_btn.pack(pady=5)
         
-        self.advanced_btn = tk.Button(self.difficulty_frame, text="Advanced (4-digit numbers)", command=lambda: self.set_difficulty("advanced"))
+        self.advanced_btn = tk.Button(self.difficulty_frame, text="Advanced (4 digit numbers)", command=lambda: self.set_difficulty("advanced"))
         self.advanced_btn.pack(pady=5)
         
         # widgets for the questions
@@ -96,7 +96,7 @@ class MathQuiz:
         num2 = self.randomInt()
         operation = self.decideOperation()
         
-        # For subtraction no negative answers
+        #  subtraction the no negative answers
         if operation == '-' and num1 < num2:
             num1, num2 = num2, num1
         
@@ -121,13 +121,13 @@ class MathQuiz:
         user_answer = self.answer_entry.get()
         
         if not user_answer:
-            messagebox.showwarning("no", "Please enter the answer!")
+            messagebox.showwarning("no", "please enter the answer!")
             return
         
         try:
             user_answer = int(user_answer)
         except ValueError:
-            messagebox.showwarning("no!", "Please enter thr number!")
+            messagebox.showwarning("no!", "please enter thr number!")
             return
         
         if self.isCorrect(user_answer):
@@ -192,6 +192,7 @@ class MathQuiz:
         self.window.mainloop()
 
 # Start the quiz
-if __name__ == "__main__":
+if _name_ == "_main_":
     quiz = MathQuiz()
     quiz.run()
+    
