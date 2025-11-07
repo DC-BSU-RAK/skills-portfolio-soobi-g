@@ -3,9 +3,9 @@ from tkinter import messagebox
 import random
 
 class MathQuiz:
-    def _init_(self):
+    def __init__(self):
         self.window = tk.Tk()
-        self.window.title("math Quiz Game")
+        self.window.title("the math Quiz Game")
         self.window.geometry("400x300")
         
         self.score = 0
@@ -127,7 +127,7 @@ class MathQuiz:
         try:
             user_answer = int(user_answer)
         except ValueError:
-            messagebox.showwarning("no!", "please enter thr number!")
+            messagebox.showwarning("noo!", "please enter thr number!")
             return
         
         if self.isCorrect(user_answer):
@@ -171,7 +171,7 @@ class MathQuiz:
         elif percentage >= 70:
             grade = "B - Good work!"
         elif percentage >= 60:
-            grade = "C - Not bad!"
+            grade = "C - Not ,bad!"
         else:
             grade = "Need more practice!*"
         
@@ -192,7 +192,6 @@ class MathQuiz:
         self.window.mainloop()
 
 # Start the quiz
-if _name_ == "_main_":
+if __name__ == "__main__":
     quiz = MathQuiz()
     quiz.run()
-    
