@@ -21,10 +21,10 @@ class StudentManager:
                 with open(self.filename, 'r') as file:
                     lines = file.readlines()
                     
-                # First line number
+                # the first line number
                 num_students = int(lines[0].strip())
                 
-                # Reading each student
+                # Reading eachone of tudent
                 self.students = []
                 for i in range(1, len(lines)):
                     if lines[i].strip():  # Skip empty lines
@@ -42,7 +42,7 @@ class StudentManager:
                 
                 print(f"Loaded {len(self.students)} students from file")
             else:
-                # Use the sample data you provided
+                
                 self.students = [
                     {"code": 1345, "name": "John Curry", "course1": 8, "course2": 15, "course3": 7, "exam": 45},
                     {"code": 2345, "name": "Sam Sturtivant", "course1": 14, "course2": 15, "course3": 14, "exam": 77},
@@ -55,7 +55,7 @@ class StudentManager:
                     {"code": 8327, "name": "Alan Shearer", "course1": 20, "course2": 20, "course3": 20, "exam": 100},
                     {"code": 2983, "name": "Les Ferdinand", "course1": 15, "course2": 17, "course3": 18, "exam": 92}
                 ]
-                self.save_students()  # Saving the sample data 
+                self.save_students()  
                 
         except Exception as e:
             messagebox.showerror("Error", f"Could not load students: {str(e)}")
@@ -66,7 +66,7 @@ class StudentManager:
                 # Write number of thr students
                 file.write(f"{len(self.students)}\n")
                 
-                # Write each student
+                # Writinfge each student
                 for student in self.students:
                     file.write(f"{student['code']},{student['name']},{student['course1']},{student['course2']},{student['course3']},{student['exam']}\n")
             
@@ -93,25 +93,25 @@ class StudentManager:
         return course_total, total_marks, percentage, grade
     
     def create_widgets(self):
-        # Title
+        # the Title
         title_label = tk.Label(self.window, text="student Manager", 
                               font=("Arial", 22, "bold"))
         title_label.pack(pady=10)
         
-        # Menu buttons frame
+        # the Menu buttons frame
         menu_frame = tk.Frame(self.window)
         menu_frame.pack(pady=10)
         
-        # Menu buttons
+        #  buttons
         buttons = [
             ("1. View All Students", self.show_all_students),
-            ("2. Find Student", self.find_student),
-            ("3. Highest Score", self.show_highest),
-            ("4. Lowest Score", self.show_lowest),
-            ("5. Sort Students", self.sort_students),
+            ("2. search Student", self.find_student),
+            ("3. the Highest Score", self.show_highest),
+            ("4. the Lowest Score", self.show_lowest),
+            ("5. Sort the Students", self.sort_students),
             ("6. Add Student", self.add_student),
             ("7. Delete Student", self.delete_student),
-            ("8. Update Student", self.update_student)
+            ("8. Update the Student", self.update_student)
         ]
         
         for i, (text, command) in enumerate(buttons):
@@ -119,7 +119,7 @@ class StudentManager:
                            width=15, height=2, font=("Arial", 10))
             btn.grid(row=i//4, column=i%4, padx=5, pady=5)
         
-        # Results display
+        # Results displayng
         self.results_frame = tk.Frame(self.window)
         self.results_frame.pack(fill=tk.BOTH, expand=True, padx=10, pady=10)
         
@@ -128,7 +128,7 @@ class StudentManager:
                                 columns=("Code", "Name", "Course1", "Course2", "Course3", "CourseTotal", "Exam", "Total", "Percentage", "Grade"), 
                                 show="headings")
         
-        # Set column headings
+        # 
         columns = {
             "Code": "Student Code",
             "Name": "Student Name", 
@@ -149,15 +149,15 @@ class StudentManager:
         self.tree.column("Name", width=120)
         self.tree.column("Percentage", width=80)
         
-        # Scrollbar
+        # the Scrollbar
         scrollbar = ttk.Scrollbar(self.results_frame, orient=tk.VERTICAL, command=self.tree.yview)
         self.tree.configure(yscroll=scrollbar.set)
         
-        # Pack tree and scrollbar
+        # 
         self.tree.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
         scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
         
-        # Summary label
+        # 
         self.summary_label = tk.Label(self.window, text="", font=("Arial", 12, "bold"))
         self.summary_label.pack(pady=5)
     
@@ -185,7 +185,7 @@ class StudentManager:
                 grade
             ))
         
-        # Updating the summary
+        # 
         if students_list:
             avg_percentage = total_percentage / len(students_list)
             self.summary_label.config(text=f"Total Students: {len(students_list)} | Average Percentage: {avg_percentage:.1f}%")
@@ -254,7 +254,7 @@ class StudentManager:
         self.display_students(sorted_students)
     
     def add_student(self):
-        # Create the form
+        # Creating the form
         add_window = tk.Toplevel(self.window)
         add_window.title("Add New Student")
         add_window.geometry("300x300")
@@ -294,7 +294,7 @@ class StudentManager:
                     "exam": int(exam_entry.get())
                 }
                 
-                # Check if code already exists
+                # 
                 for student in self.students:
                     if student['code'] == new_student['code']:
                         messagebox.showerror("Error", "Student code already exists!")
@@ -336,7 +336,7 @@ class StudentManager:
                 if (search_term.lower() in student['name'].lower() or 
                     search_term == str(student['code'])):
                     
-                    # Simple update 
+                    # 
                     update_window = tk.Toplevel(self.window)
                     update_window.title(f"Update {student['name']}")
                     update_window.geometry("300x250")
